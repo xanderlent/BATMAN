@@ -1,0 +1,160 @@
+.w3-modal{z-index:3;display:block;padding-top:100px;position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4)}
+.w3-modal-content{margin:auto;background-color:#fff;position:relative;padding:0;outline:0;width:600px}
+.w3-btn,.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.w3-btn:hover{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+.w3-btn,.w3-button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
+.w3-disabled,.w3-btn:disabled,.w3-button:disabled{cursor:not-allowed;opacity:0.3}.w3-disabled *,:disabled *{pointer-events:none}
+.w3-btn.w3-disabled:hover,.w3-btn:disabled:hover{box-shadow:none}
+.w3-button:hover{color:#000!important;background-color:#ccc!important}
+.w3-container,.w3-panel{padding:0.01em 16px}.w3-panel{margin-top:16px;margin-bottom:16px}
+.w3-display-topright{position:absolute;right:0;top:0}
+
+
+html, body {
+	margin:0;
+	padding:0;
+	font-family: "Consolas", Verdana;
+	text-align: left;
+	background-color: #F2F2F2;
+}
+
+body h1 {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 32px;
+	margin: 7px;
+}
+
+#wrapper {
+	position:absolute;
+	padding: 0 0;
+	top: 0; 
+	height: 100%;
+	left: 0; 
+	right: 0;}
+
+#navigation {
+	display: flex;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: rgb(86, 61, 124);
+	border-left: 8px solid gray;
+	border-right: 8px solid gray;
+	height: 51.6px;
+}
+
+#navigation h3 {
+	margin-right: 15px;
+	margin-left: auto;
+	margin-bottom: auto;
+	margin-top: auto;
+}
+
+.button{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 12.5px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 7px;
+	margin-right: 7px;
+	background-color: lightgray;
+	border-style: solid;
+	border-color: darkgray;
+	border-width: 2px 2px 2px 2px;
+	border-radius: 7px;
+	transition: background-color .5s;
+	color: black;
+}
+
+.button:link,.navbutton:visited {
+	text-decoration: none;
+}
+
+.button:hover,.navbutton:active {
+	text-decoration: underline;
+	text-decoration-color: rgb(86, 61, 124);
+	background-color: gray
+}
+
+#container {
+	min-height: calc(100% - 71.6px - 5px);
+	width: 100%;
+	display: flex;
+	border-bottom: solid gray 5px;
+}
+
+h3, h2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#container>div {
+	margin: 0 0 0 0;
+}
+
+#container div {
+	overflow-y: auto;
+}
+
+#left {
+	position: relative;
+	flex-basis: 65%;
+	padding-left: 12px;
+}
+
+#main {
+	display: flex;
+	align-items: flex-end;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+#sidepane {
+	flex-basis: 35%;
+	border-left: solid gray 7px;
+	display: flex;
+	flex-direction: column;
+}
+
+#sidepane>div {
+	padding-left: 8px;
+}
+
+#actions-wrapper {
+	flex-basis: 40%;
+	border-bottom: solid lightgray 2px;
+}
+
+#details {
+	flex-basis: 60%;
+}
+
+#actions {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+}
+
+.action>p {
+	display: none;
+}
+
+.w3-container>.action>p {
+	display: block;
+}
+
+.action-button {
+	flex: 1 1 0;
+}
+
+#log {
+	margin-top: 10px;
+	position: absolute;
+	border: solid lightgray 2px;
+	bottom: 2px;
+	width: 97%;
+	margin-left: auto;
+	margin-right: auto;
+}

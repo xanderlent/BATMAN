@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+	<!-- <link rel="stylesheet" type="text/css" href="/static/w3.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/rack.css">
+	<script language="javascript" type="text/javascript" src="/static/base.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		{% include 'header.html' %}
+		<div id="container">
+			<div id="left">
+				<h2>Racks</h2>
+				<div id="main">
+					{% for rack in racks %}
+						<div class="rack" style="--size: {{rack.size}};"
+							id="rack{{rack.id}}">
+							<!-- {% for server in rack.slots %} -->
+								<div class="server {{server.type}}" 
+									style="--size: {{server.size}};"
+									data-slot="{{server.slot}}"
+									id="r{{rack.id}}s{{server.slot}}">
+								</div>
+							<!-- {% endfor %} -->
+						</div>
+					{% endfor %}
+				</div>
+				<div id="log">
+					<pre>
+						{{log}}
+					</pre>
+				</div>
+			</div>
+			<div id="sidepane">
+				<div id="actions-wrapper">
+				<h3>Actions</h3>
+					<div id="actions">
+						{% for action in actions %}
+							<div class="action">
+								<h4>{{action.title}}</h4>
+								<p>{{action.info}}</p>
+								<form action="/action" method="POST">
+									{% for input in action.inputs %}
+									<div>
+										<label>{{input.label}}</label>
+										<input type="{{input.type}}" name="{{input.name}}" 
+										{%- if input.value is not none -%}
+											{{" value="}}"{{input.value}}"
+										{%- endif -%}
+										{%- if input.placeholder is not none -%}
+											{{" placeholder="}}"{{input.placeholder}}"
+										{%- endif -%}
+										{%- if input.extra is not none -%}
+											{{input.extra}}
+										{%- endif -%}
+										>
+									</div>
+									{% endfor %}
+									<button type="submit">{{action.title}}</button>
+								</form>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div id="details">
+				<h3>Details</h3>
+				</div>
+			</div>
+		</div>
+		{#{% include 'footer.html' %}#}
+	</div>
+</body>
+</html>
