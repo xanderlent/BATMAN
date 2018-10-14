@@ -15,13 +15,13 @@
 					{% for rack in racks %}
 						<div class="rack" style="--size: {{rack.size}};"
 							id="rack{{rack.id}}">
-							<!-- {% for server in rack.slots %} -->
+							<!-- {% for server in rack.slots %}
 								<div class="server {{server.type}}" 
 									style="--size: {{server.size}};"
 									data-slot="{{server.slot}}"
 									id="r{{rack.id}}s{{server.slot}}">
 								</div>
-							<!-- {% endfor %} -->
+							{% endfor %} -->
 						</div>
 					{% endfor %}
 				</div>
