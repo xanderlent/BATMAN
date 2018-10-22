@@ -21,7 +21,7 @@ class Batman(object):
 			Rule('/', endpoint='rack'),
 			Rule('/rack', endpoint='rack'),
 			Rule('/rackdetail', endpoint='rackdetail'),
-			Rule('/server', endpoint='rack'),
+			Rule('/server', endpoint='server'),
 			Rule('/rackup', endpoint='rackup'),
 			Rule('/network', endpoint='network'),
 			Rule('/switch', endpoint='switch'),

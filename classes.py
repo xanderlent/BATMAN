@@ -23,19 +23,24 @@ class Action:
 		self.inputs = args
 
 class Server:
-	def __init__(self, type, size, slot):
+	def __init__(self, type, size, slot, rack,
+			os='Unkown OS', osimg='', img='', hostname=''):
 		self.type = type
 		self.size = size
 		self.slot = slot
+		self.img = img
+		self.os = os
+		self.osimg = osimg
+		self.hostname = hostname
+		self.rack = rack
+	
 
 	def __eq__(self, other):
 		return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
 
 class EmptyServer(Server):
-	def __init__(self, slot):
-		self.type = 'empty-server'
-		self.size = 1
-		self.slot = slot
+	def __init__(self, slot, rack):
+		super().__init__('empty-server', 1, slot, rack)
 
 #slots are 0 indexed
 class Rack:
@@ -51,14 +56,14 @@ class Rack:
 	def __init__(self, size):
 		self.size = size
 		self.id = Rack.num_racks
-		self.slots = [EmptyServer(i) for i in range(size)]
+		self.slots = [EmptyServer(i, self.id) for i in range(size)]
 		Rack.num_racks = Rack.num_racks + 1
 
 	def __del__(self):
 		Rack.num_racks = Rack.num_racks - 1
 
 	def add_server(self, server):
-		if all(self.slots == EmptyServer(i) for i in range(server.slot, server.slot+server.size)):
+		if all(self.slots == EmptyServer(i, self.id) for i in range(server.slot, server.slot+server.size)):
 			for i in range(server.size - 1):
 				self.slots[server.slot + 1 + i] = None
 			self.slots[server.slot] = server

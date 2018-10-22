@@ -8,6 +8,7 @@ from io import StringIO
 
 class Controller:
 	def __init__(self):
+		self.templates = []
 		self.log_stream = StringIO()
 		self.log = logging.getLogger('batman')
 		self.log.setLevel(logging.DEBUG)
@@ -37,6 +38,8 @@ class Controller:
 		self.io_lock.release()
 		
 	def add_rack(self, **kwargs):
+		if kwargs['size'] <= 0 :
+			return
 		self.rack_lock.acquire()
 		self.racks.append(Rack(kwargs['size']))
 		self.log.info("added rack #%d" % (len(self.racks)-1))

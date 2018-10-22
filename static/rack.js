@@ -38,19 +38,30 @@ function getDetails(){
 
 function updateDetails(data) {
 	//TODO: make this pretty
-	detailBlock = document.createElement('p');
-	detailBlock.innerText = data.type+'\n'+data.size+'U\n';
+	detailBlock = document.createElement('div');
+	detailText = document.createElement('p');
+	detailText.innerHTML = data.hostname + '<br>';
+	detailText.innerHTML += data.type + '<br>'
+	detailText.innerHTML += data.size+'U<br>';
+	detailText.innerHTML += data.os+'<br>';
+	detailImg = document.createElement('img');
+	detailImg.src = data.img;
+	
 	detailActions = document.createElement('div');
 	detailActions.classList.add('detail-actions')
-	functs = [];
-	actionNames = [];
+	functs = [function(){window.location='/server?rack='+data.rack+'slot='+data.slot;}];
+	actionNames = ['More details'];
 	for ( i in actionNames){
 		action = document.createElement('div');
 		action.classList.add('button');
 		action.classList.add('detail-button');
 		action.onclick = functs[i];
+		console.log(actionNames[i]);
+		action.innerText = actionNames[i];
 		detailActions.appendChild(action);
 	}
+	detailBlock.appendChild(detailText);
+	detailBlock.appendChild(detailImg);
 	$('details').innerHTML = '';
 	$('details').appendChild(detailBlock);
 	$('details').appendChild(detailActions);
