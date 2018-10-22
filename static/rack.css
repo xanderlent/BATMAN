@@ -7,5 +7,15 @@
 	border-radius: 5px;
 	margin: 10px;
 	display: flex;
+	flex-flow: column-reverse nowrap;
+	position: relative;
+}
+
+.server {
+	margin-top: 0;
+	margin-bottom: 0;
+	height: calc(var(--size) * 12px);
+	
+	border: solid lightgray 1px;
 }
 

@@ -19,9 +19,7 @@ class Action {
 let actions = {};
 
 (function() {
-	window.onload = function(){
-		rerenderActions();
-	};
+	window.addEventListener("load", rerenderActions);
 })();
 
 function rerenderActions(){

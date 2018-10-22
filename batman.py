@@ -20,7 +20,8 @@ class Batman(object):
 		self.url_map = Map([
 			Rule('/', endpoint='rack'),
 			Rule('/rack', endpoint='rack'),
-			Rule('/rackdetail', endpoint='rack'),
+			Rule('/rackdetail', endpoint='rackdetail'),
+			Rule('/server', endpoint='rack'),
 			Rule('/rackup', endpoint='rackup'),
 			Rule('/network', endpoint='network'),
 			Rule('/switch', endpoint='switch'),
@@ -55,11 +56,15 @@ class Batman(object):
 		return Response(t.render(context), mimetype='text/html')
 
 	def on_rack(self, request):
-		print(self.controller.racks)
+		# print(self.controller.racks)
 		return self.render_template('rack.html',
 			pages=self.navpages,
 			actions=Rack.rack_actions,
-			racks=self.controller.racks)
+			racks=self.controller.racks,
+			log=self.controller.get_log(10))
+			
+	def on_rackdetail(self, request):
+		return Response(self.controller.get_server_details(request))
 
 	def on_action(self, request):
 		return self.controller.action_handler(request)

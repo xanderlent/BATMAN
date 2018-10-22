@@ -50,8 +50,8 @@ class Rack:
 
 	def __init__(self, size):
 		self.size = size
-		self.slots = [EmptyServer(i) for i in range(size)]
 		self.id = Rack.num_racks
+		self.slots = [EmptyServer(i) for i in range(size)]
 		Rack.num_racks = Rack.num_racks + 1
 
 	def __del__(self):

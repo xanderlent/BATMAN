@@ -3,7 +3,9 @@
 	<!-- <link rel="stylesheet" type="text/css" href="/static/w3.css"> -->
 	<link rel="stylesheet" type="text/css" href="/static/base.css">
 	<link rel="stylesheet" type="text/css" href="/static/rack.css">
+	<script language="javascript" type="text/javascript" src="/static/rack.js"></script>
 	<script language="javascript" type="text/javascript" src="/static/base.js"></script>
+	
 </head>
 <body>
 	<div id="wrapper">
@@ -15,20 +17,19 @@
 					{% for rack in racks %}
 						<div class="rack" style="--size: {{rack.size}};"
 							id="rack{{rack.id}}">
-							<!-- {% for server in rack.slots %} -->
+							{% for server in rack.slots %}
 								<div class="server {{server.type}}" 
 									style="--size: {{server.size}};"
 									data-slot="{{server.slot}}"
+									data-rack="{{rack.id}}"
 									id="r{{rack.id}}s{{server.slot}}">
 								</div>
-							<!-- {% endfor %} -->
+							{% endfor %}
 						</div>
 					{% endfor %}
 				</div>
 				<div id="log">
-					<pre>
-						{{log}}
-					</pre>
+<pre>{{log}}</pre>
 				</div>
 			</div>
 			<div id="sidepane">
@@ -62,8 +63,10 @@
 						{% endfor %}
 					</div>
 				</div>
-				<div id="details">
-				<h3>Details</h3>
+				<div id="detail-wrapper">
+					<h3>Details</h3>
+					<div id="details">
+					</div>
 				</div>
 			</div>
 		</div>
