@@ -63,7 +63,7 @@ class Rack:
 		Rack.num_racks = Rack.num_racks - 1
 
 	def add_server(self, server):
-		if all(self.slots == EmptyServer(i, self.id) for i in range(server.slot, server.slot+server.size)):
+		if all(self.slots[i] == EmptyServer(i, self.id) for i in range(server.slot, server.slot+server.size)):
 			for i in range(server.size - 1):
 				self.slots[server.slot + 1 + i] = None
 			self.slots[server.slot] = server
