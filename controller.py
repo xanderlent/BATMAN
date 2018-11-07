@@ -52,7 +52,15 @@ class Controller:
 		self.log.info("removed rack #%d" % len(self.racks))
 		self.rack_lock.release()
 		
-	def action_handler(self, request):
+		
+	def add_server(self, **kwargs):
+		self.rack_lock.acquire()
+		self.racks[kwargs['rack']].add_server(Server(kwargs['size'],kwargs['slot'],kwargs['rack'],kwargs['hostname']))
+		self.log.info("adding server")
+		self.rack_lock.release()
+		
+		
+	def rack_action_handler(self, request):
 		if 'command' not in request.form:
 			return Response("Error malformed request")
 		params = {}

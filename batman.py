@@ -25,7 +25,7 @@ class Batman(object):
 			Rule('/rackup', endpoint='rackup'),
 			Rule('/network', endpoint='network'),
 			Rule('/switch', endpoint='switch'),
-			Rule('/action', endpoint='action'),
+			Rule('/rack_action', endpoint='rack_action'),
 		])
 		#list of pages for navigation
 		self.navpages = [
@@ -66,8 +66,8 @@ class Batman(object):
 	def on_rackdetail(self, request):
 		return Response(self.controller.get_server_details(request))
 
-	def on_action(self, request):
-		return self.controller.action_handler(request)
+	def on_rack_action(self, request):
+		return self.controller.rack_action_handler(request)
 	
 
 

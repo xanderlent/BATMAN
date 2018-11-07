@@ -18,12 +18,14 @@
 						<div class="rack" style="--size: {{rack.size}};"
 							id="rack{{rack.id}}">
 							{% for server in rack.slots %}
+							{%-if server is not none %}
 								<div class="server {{server.type}}" 
 									style="--size: {{server.size}};"
 									data-slot="{{server.slot}}"
 									data-rack="{{rack.id}}"
 									id="r{{rack.id}}s{{server.slot}}">
 								</div>
+							{% endif -%}
 							{% endfor %}
 						</div>
 					{% endfor %}
@@ -40,7 +42,7 @@
 							<div class="action">
 								<h4>{{action.title}}</h4>
 								<p>{{action.info}}</p>
-								<form action="/action" method="POST">
+								<form action="/rack_action" method="POST">
 									{% for input in action.inputs %}
 									<div>
 										<label>{{input.label}}</label>
